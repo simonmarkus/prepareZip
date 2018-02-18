@@ -1,4 +1,4 @@
-package de.simonmarkus.prepareZipMaven;
+package de.simonmarkus.prepareZip;
 
 import java.io.File;
 import java.io.FileOutputStream;

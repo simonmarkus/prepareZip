@@ -1,4 +1,4 @@
-package de.simonmarkus.prepareZipMaven;
+package de.simonmarkus.prepareZip;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
