@@ -32,6 +32,7 @@ public class SchemaParser {
 		((Element) document.selectNodes(versionPath).get(0)).addElement("xs:pattern value=\"" + version + "\"");
 		
 	    OutputFormat format = OutputFormat.createPrettyPrint();
+	    format.setIndentSize(4);
 	    format.setEncoding("utf-8");
 	    XMLWriter writer = new XMLWriter(new FileOutputStream(xsdDatei),format);
 	    writer.write(document);

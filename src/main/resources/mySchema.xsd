@@ -1,59 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://meinnamespace.meinefirma.de"
+           targetNamespace="http://meinnamespace.meinefirma.de"
+           elementFormDefault="qualified">
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://meinnamespace.meinefirma.de" targetNamespace="http://meinnamespace.meinefirma.de" elementFormDefault="qualified">  
-  <xs:element name="buecher"> 
-    <xs:complexType> 
-      <xs:sequence> 
+   <xs:element name="buecher">
+      <xs:complexType>
+         <xs:sequence>
         <xs:element name="version"> 
           <xs:simpleType> 
             <xs:restriction base="xs:string"> 
               <xs:pattern value="1.00"/>  
               <xs:pattern value="1.01"/>  
-              <xs:pattern value="1.02"/>
             </xs:restriction> 
           </xs:simpleType> 
         </xs:element>  
-        <xs:element name="autor" type="autorType" maxOccurs="unbounded"/>  
-        <xs:element name="verlag" type="verlagType" maxOccurs="unbounded"/>  
-        <xs:element name="buch" type="buchType" maxOccurs="unbounded"/> 
-      </xs:sequence> 
-    </xs:complexType>  
-    <xs:key name="autorKey"> 
-      <xs:selector xpath="autor"/>  
-      <xs:field xpath="@id"/> 
-    </xs:key>  
-    <xs:keyref name="autorKeyref" refer="autorKey"> 
-      <xs:selector xpath="buch"/>  
-      <xs:field xpath="@autorID"/> 
-    </xs:keyref>  
-    <xs:key name="verlagKey"> 
-      <xs:selector xpath="verlag"/>  
-      <xs:field xpath="@id"/> 
-    </xs:key>  
-    <xs:keyref name="verlagKeyref" refer="verlagKey"> 
-      <xs:selector xpath="buch"/>  
-      <xs:field xpath="@verlagID"/> 
-    </xs:keyref> 
-  </xs:element>  
-  <xs:complexType name="autorType"> 
-    <xs:sequence> 
-      <xs:element name="name" type="xs:string"/>  
-      <xs:element name="ort" type="xs:string" minOccurs="0"/> 
-    </xs:sequence>  
-    <xs:attribute name="id" type="xs:long" use="required"/> 
-  </xs:complexType>  
-  <xs:complexType name="verlagType"> 
-    <xs:sequence> 
-      <xs:element name="name" type="xs:string"/>  
-      <xs:element name="ort" type="xs:string" minOccurs="0"/> 
-    </xs:sequence>  
-    <xs:attribute name="id" type="xs:long" use="required"/> 
-  </xs:complexType>  
-  <xs:complexType name="buchType"> 
-    <xs:sequence> 
-      <xs:element name="titel" type="xs:string"/> 
-    </xs:sequence>  
-    <xs:attribute name="autorID" type="xs:long" use="required"/>  
-    <xs:attribute name="verlagID" type="xs:long" use="required"/> 
-  </xs:complexType> 
+            <xs:element name="autor"  type="autorType"  maxOccurs="unbounded" />
+            <xs:element name="verlag" type="verlagType" maxOccurs="unbounded" />
+            <xs:element name="buch"   type="buchType"   maxOccurs="unbounded" />
+         </xs:sequence>
+      </xs:complexType>
+      <xs:key         name="autorKey">
+         <xs:selector xpath="autor" />
+         <xs:field    xpath="@id" />
+      </xs:key>
+      <xs:keyref      name="autorKeyref" refer="autorKey">
+         <xs:selector xpath="buch" />
+         <xs:field    xpath="@autorID" />
+      </xs:keyref>
+      <xs:key         name="verlagKey">
+         <xs:selector xpath="verlag" />
+         <xs:field    xpath="@id" />
+      </xs:key>
+      <xs:keyref      name="verlagKeyref" refer="verlagKey">
+         <xs:selector xpath="buch" />
+         <xs:field    xpath="@verlagID" />
+      </xs:keyref>
+   </xs:element>
+
+   <xs:complexType name="autorType">
+      <xs:sequence>
+         <xs:element name="name" type="xs:string" />
+         <xs:element name="ort"  type="xs:string" minOccurs="0" />
+      </xs:sequence>
+      <xs:attribute  name="id"   type="xs:long" use="required" />
+   </xs:complexType>
+
+   <xs:complexType name="verlagType">
+      <xs:sequence>
+         <xs:element name="name" type="xs:string" />
+         <xs:element name="ort"  type="xs:string" minOccurs="0" />
+      </xs:sequence>
+      <xs:attribute  name="id"   type="xs:long" use="required" />
+   </xs:complexType>
+
+   <xs:complexType name="buchType">
+      <xs:sequence>
+         <xs:element name="titel"    type="xs:string" />
+      </xs:sequence>
+      <xs:attribute  name="autorID"  type="xs:long" use="required" />
+      <xs:attribute  name="verlagID" type="xs:long" use="required" />
+   </xs:complexType>
+
 </xs:schema>
